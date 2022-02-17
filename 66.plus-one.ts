@@ -6,12 +6,12 @@
 
 // @lc code=start
 function plusOne(digits: number[]): number[] {
-    let z: string;
-    for (let i = 0; i < digits.length; i++){
-        z+= digits[i];
-        console.log(parseInt(z));
-    }
-    return digits;
-};
+  let z: string = "";
+  for (let i = 0; i < digits.length; i++) {
+    z += digits[i].toString();
+  }
+  let x = BigInt(z);
+  x++;
+  return Array.from(String(x), Number);
+}
 // @lc code=end
-

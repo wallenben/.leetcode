@@ -6,18 +6,17 @@
 
 // @lc code=start
 class LRUCache {
-    zarray: number[];
-    
+    myMap: Map<number,number>;
     constructor(capacity: number) {
-        this.zarray = [];
+        let myMap = new Map<Number, Number>();
     }
 
     get(key: number): number {
-       
+       return this.myMap.get(key);
     }
 
     put(key: number, value: number): void {
-
+        this.myMap.set(key,value);
     }
 }
 
