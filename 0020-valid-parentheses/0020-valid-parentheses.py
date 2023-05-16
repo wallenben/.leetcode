@@ -1,21 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+       #place closing brackets, map to find out what works
         stack = []
-        lost_brackets = []
+        map = {"(": ")", "[": "]",  "{": "}"}
         for i in s:
-            if i in ("(", "[", "{"):
-                stack.append(i)
+            #if i is a key
+            if i in map:
+                #append the paran
+                stack.append(map[i])
             elif i in (")", "]", "}"):
-                #check for edgecase:
-                lost_brackets.append(i)
-                if len(stack) == 0: return False
-                if i == ")" and stack[-1] == "(":
-                    stack.pop(-1)
-                    lost_brackets.pop(-1)
-                elif i == "]" and stack[-1] == "[":
-                    stack.pop(-1)
-                    lost_brackets.pop(-1)
-                elif i == "}" and stack[-1] == "{":
-                    stack.pop(-1)
-                    lost_brackets.pop(-1)
-        return len(stack) == 0 and len(lost_brackets) == 0
+                #if the stack doesn't have an init paren or it doesn't equal the end
+                if (len(stack) == 0 or i != stack.pop()):
+                    return False
+        return len(stack) == 0
